@@ -1,0 +1,66 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Book
+{% endblock %}
+
+{% block body %}
+
+{% if result %}
+<h1>ISBN: {{result.isbn}}</h1>
+<h1>Title: {{result.title}}</h1>
+<h1>Author: {{result.author}}</h1>
+<h1>Publication: {{result.year}}</h1>
+<h1>Ratings Received on goodreads.com: {{goodreads.json().books[0].ratings_count}}</h1>
+<h1>Average Rating Received on goodreads.com: {{goodreads.json().books[0].average_rating}}</h1>
+
+
+  {% if reviewed %}
+  <ul>
+    <h1>My Review</h1>
+    <li>Rating: {{your_review.rating}}</li>
+    <li>Review: {{your_review.review}}</li>
+
+  </ul>
+  {% else %}
+  <form action="{{ url_for('book', isbn = result.isbn)}}" method="post">
+      <div class="form-group">
+        <label for="exampleFormControlSelect1">Rating</label>
+        <select class="form-control" name = "rating" id="exampleFormControlSelect1">
+          <option>1</option>
+          <option>2</option>
+          <option>3</option>
+          <option>4</option>
+          <option>5</option>
+        </select>
+      </div>
+       <div class="form-group">
+      <label for="exampleFormControlTextarea1">Review</label>
+      <textarea class="form-control" name="review" id="exampleFormControlTextarea1" rows="3"></textarea>
+      </div>
+      <button type="submit" name="submit" value="review" class="btn btn-primary">Submit Review</button>
+    </form> 
+
+  {% endif %}
+  <ul>
+    <l1><h1>Reviews from other Users</h1></l1>
+  </ul>
+  {% for review in reviews %}
+  <ol>
+    <li>Review By: {{review.user_email}}</li>
+    <ul>  
+      <li>Rating: {{review.rating}}</li>
+      <li>Review: {{review.review}}</li>
+    </ul>
+  </ol>
+  {% else %}
+  <ul>
+    <li>No Reviews Found by other users</li>
+  </ul>
+  {% endfor %}
+{% else %}
+<h1>This book doesn't exist</h1>
+
+{% endif %}
+
+{% endblock %}

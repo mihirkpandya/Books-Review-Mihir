@@ -1,0 +1,21 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Account
+{% endblock %}
+
+{% block body %}
+
+{% if value %}
+
+<h1>{{value}}</h1>
+
+{% endif %}
+  <ol>
+    {% for result in results %}
+      <a href="{{ url_for('book', isbn = result.isbn)}}"><li >{{result.title}} by {{result.author}}({{result.year}})</li></a>
+    {% else %}
+      <li> No Books Found </li>
+    {% endfor %}
+  </ol>
+{% endblock %}

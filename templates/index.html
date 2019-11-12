@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Welcome</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+</head>
+<body>
+
+	<form action="{{ url_for('account')}}" method="post">
+	  <div class="form-group">
+	    <label for="emailaddress1">Email address</label>
+	    <input type="email" class="form-control" name="emailaddress" id="emailaddress1" aria-describedby="emailHelp" placeholder="Enter email">
+	    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+	  </div>
+	  <div class="form-group">
+	    <label for="exampleInputPassword1">Password</label>
+	    <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+	  </div>
+	  <button type="register" name="submit" value="register" class="btn btn-primary">Register</button>
+	  <button type="singin" name="submit" value="signin" class="btn btn-primary">Sign In</button>
+	</form> 
+
+	<h1>{{message}}</h1>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	
+
+<!-- Popper JS -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+
+	<!-- Latest compiled JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+
+</html>
